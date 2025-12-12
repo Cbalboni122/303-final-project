@@ -22,7 +22,7 @@ Step 3: Now that we have created the agent, we have access to all of the tools. 
   phishing scam, return the likelihood on a scale of 100, 1 being lowest, and why."
   
   Step 3.1: This prompt gives the model an idea of what to output to the user. It helps
-    us minimize what information the user sees. 
+    to minimize what information the user sees. 
 Step 4: Now the agent needs access to the internet and the database that we are using. We then
   move down to the "Knowledge section" of Azure. Here, we can add a connection to the internet and
   to our database. However, the AI does not know what information to look for inside our database.
@@ -33,4 +33,25 @@ Step 5: We now save the model and move to the "Fine-tuning" section of Azure. He
 Step 6: Now that the model knows how to organize its response, it needs to know how to use the information
   provided to it. Inside the CSV file we gave, there are tens of thousands of scam emails. The model goes through
   the database and takes in the email addresses and the body of the email, and learns how they are structured. 
-  This is how 
+  This is how the AI model learns what to detect.
+Step 7: With the Model now trained on the database, we use the internet connection we established above to continue
+  to train the model on scam emails.
+Step 8: For this step, the model must now be trained on good, clean emails so it can tell the difference. For my
+  project, I ran out of the free resources before I was able to complete this training. Because of this, my model
+  would return false positives on a higher-than-wanted average, with the safe rating for my project being values less
+  than 50%. 
+Step 9: Clone the model. In the clone model, move to the "Connected Agents" tab and add the base model to the clone one.
+  Doing this opens up the resources again for the new model.
+  Step 9.1: inside the "Connected Agents" tab, set the base model trigger to the user interacting with the clone model.
+  This way, the base model can affect the output of the clone. 
+
+Future improvements:
+  To improve this project in the future, I would need to train it using safe emails to lower the rate of false positives.
+  Having the safe value being anything under 50 is inefficient and could lead to problems in the future.
+
+  Not only that, but putting in more money instead of the free model would allow me to train the base model better instead
+  of having to clone it every time I run out of the free resources.
+  
+  Also, having the model be able to connect directly to an email instead of being an outside tool that requires the user
+  to copy and paste a suspected scam email would make this project much more efficient.
+  
